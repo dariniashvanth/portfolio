@@ -1293,123 +1293,7 @@ margin-left: 70px;
 }
 
 /*--------------------------------------------------------------
-# Skills Section
---------------------------------------------------------------*/
-.skills .skill-box {
-  background-color: var(--surface-color);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
 
-.skills .skill-box h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.skills .skill-box p {
-  font-size: 0.5rem;
-  margin-bottom: 0.8rem;
-  opacity: 0.6;
-}
-
-.skills .skill-box .progress {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
-  border-radius: 50px;
-  height: 8px;
-  margin-top: 5px;
-  overflow: hidden;
-}
-
-.skills .skill-box .progress .progress-bar {
-  background-color: var(--accent-color);
-  height: 100%;
-  position: relative;
-  border-radius: 50px;
-  transition: 0.9s;
-  width: 1px;
-}
-
-/*--------------------------------------------------------------
-# Stats Section
---------------------------------------------------------------*/
-.stats .avatars {
-  position: relative;
-}
-
-.stats .avatars img {
-  width: 60px;
-  height: 60px;
-  border: 3px solid var(--accent-color);
-  margin-right: -15px;
-  transition: transform 0.3s ease;
-}
-
-.stats .avatars img:hover {
-  transform: translateY(-5px);
-  z-index: 2;
-}
-
-.stats .counters h2 {
-  color: var(--heading-color);
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.stats .counters h2 span {
-  display: inline-block;
-}
-
-.stats .counters p {
-  color: var(--default-color);
-  font-size: 18px;
-  margin: 0;
-  opacity: 0.9;
-}
-
-@media (max-width: 991px) {
-  .stats .row {
-    text-align: center;
-  }
-
-  .stats .avatars {
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-
-  .stats .counters h2 {
-    font-size: 36px;
-  }
-
-  .stats .counters p {
-    font-size: 16px;
-  }
-
-  .stats .counters .col-md-4 {
-    margin-bottom: 30px;
-  }
-
-  .stats .counters .col-md-4:last-child {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .stats {
-    padding: 60px 0;
-  }
-
-  .stats .avatars {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .stats .avatars img {
-    margin: 0 -8px;
-  }
-}
 
 /*--------------------------------------------------------------
 # Testimonials Section
@@ -2411,8 +2295,8 @@ margin-left: 70px;
 }
 
 .portfolio .portfolio-card .portfolio-info p {
-  font-size: 0.9rem;
-  color: var(--default-color);
+  font-size: 0.8rem;
+  color: gray;
   margin-bottom: 10px;
 }
 
@@ -2986,4 +2870,95 @@ margin-top: 40px;
 .about .intro-content {
   margin-top: 0;  /* remove top offset */
   padding-top: 0;
+}
+
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 60px; /* horizontal spacing */
+  row-gap: 90px;    /* vertical spacing (adjust as you like) */
+  text-align: left;
+}
+
+
+/* Each skill item: text on left, icon on right */
+.skill-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 6px; /* space for underline */
+}
+
+/* Text styling */
+.skill-logo span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #d1cfcf;
+}
+
+/* Icon styling */
+.skill-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Blue underline (animated) */
+.skill-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #007bff4b;
+  transition: width 0.8s ease;
+}
+
+/* When AOS fade-up completes, the line expands */
+.skill-logo.aos-animate .skill-line {
+  width: 100%;
+}
+
+/* === Responsive Design === */
+@media (max-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skill-logo {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-logo {
+    flex-direction: column; /* stack text and icon vertically */
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* 1 per row */
+  }
+
+  .skill-logo {
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    text-align: center;
+  }
 }
